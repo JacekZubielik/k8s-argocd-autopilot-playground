@@ -1,0 +1,14 @@
+{
+  "appName": "binance-proxy",
+  "userGivenName": "binance-proxy",
+  "destNamespace": "trade",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/binance-proxy/overlays/dev",
+  "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
+  "srcTargetRevision": "",
+  "appRole": "trade",
+  "labels": "",
+  "annotations": "",
+  "exclude": "",
+  "include": ""
+}
