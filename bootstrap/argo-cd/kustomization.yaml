@@ -19,3 +19,4 @@ kind: Kustomization
 namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
+- resources/argocd-cm-cmp-kustomize-build-with-helm.yaml
