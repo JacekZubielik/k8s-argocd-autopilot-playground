@@ -5,7 +5,10 @@
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/binance-proxy/overlays/dev",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
-  "srcTargetRevision": "",
-  "labels": null,
-  "annotations": null
+  "srcTargetRevision": "dev-init",
+  "appRole": "trade",
+  "labels": "",
+  "annotations": "",
+  "exclude": "",
+  "include": ""
 }
