@@ -4,10 +4,11 @@ kind: Kustomization
 
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-  labels:
-    app.kubernetes.io/name: binance-proxy
+    argocd.argoproj.io/hook: PreSync
+#   labels:
+#     app.kubernetes.io/name: binance-proxy
 
 # helmCharts:
 #   - name: binance-proxy

@@ -4,6 +4,14 @@ namespace: dev
 resources:
 - ../../base
 
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  # labels:
+  #   app.kubernetes.io/name: binance-proxy
+
+
 helmCharts:
   - name: binance-proxy
     version: 0.0.4
