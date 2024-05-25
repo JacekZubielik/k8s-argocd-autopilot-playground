@@ -1,4 +1,24 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-resources:
-- github.com/jacekzubielik/k8s-argocd-autopilot-playground/apps/binance-proxy/
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    app.kubernetes.io/name: binance-proxy
+
+helmCharts:
+  - name: binance-proxy
+    version: 0.0.4
+    repo: https://jacekzubielik.github.io/jz-helm-charts
+    releaseName: binance-proxy
+    namespace: binance-proxy
+    includeCRDs: false
+    valuesFile: values.yaml
+
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
+# resources:
+# - github.com/jacekzubielik/k8s-argocd-autopilot-playground/apps/binance-proxy/
