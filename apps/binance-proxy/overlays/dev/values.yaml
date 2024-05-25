@@ -48,7 +48,7 @@ resources:
     cpu: 150m
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 5
   averageCPUUtilizationPercentage: 50
