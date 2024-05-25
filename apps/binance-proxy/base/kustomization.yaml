@@ -9,14 +9,14 @@ metadata:
   labels:
     app.kubernetes.io/name: binance-proxy
 
-helmCharts:
-  - name: binance-proxy
-    version: 0.0.4
-    repo: https://jacekzubielik.github.io/jz-helm-charts
-    releaseName: binance-proxy
-    # namespace: binance-proxy
-    includeCRDs: false
-    valuesFile: values.yaml
+# helmCharts:
+#   - name: binance-proxy
+#     version: 0.0.4
+#     repo: https://jacekzubielik.github.io/jz-helm-charts
+#     releaseName: binance-proxy
+#     # namespace: binance-proxy
+#     includeCRDs: false
+#     valuesFile: values.yaml
 
 # apiVersion: kustomize.config.k8s.io/v1beta1
 # kind: Kustomization
