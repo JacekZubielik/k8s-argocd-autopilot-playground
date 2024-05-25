@@ -108,6 +108,7 @@ spec:
           - PruneLast=true
           - Delete=false
           - RespectIgnoreDifferences=true
+          - FailOnSharedResource=false
         automated:
           allowEmpty: true
           prune: true
