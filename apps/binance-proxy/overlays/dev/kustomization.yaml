@@ -11,12 +11,15 @@ metadata:
     argocd.argoproj.io/hook: PreSync
   # labels:
   #   app.kubernetes.io/name: binance-proxy
+  labels:
+    appId: binance-proxy-[ID]
 
 helmCharts:
-  - name: binance-proxy
+  - name: binance-proxy-[ID]
     version: 0.0.4
     repo: https://jacekzubielik.github.io/jz-helm-charts
-    releaseName: binance-proxy
+    # releaseName: binance-proxy
+    releaseName: [ID]
     includeCRDs: false
     valuesFile: values.yaml
 
