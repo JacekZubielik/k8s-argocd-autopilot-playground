@@ -13,7 +13,7 @@ spec:
       - path: bootstrap/cluster-resources/*.json
       repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
       requeueAfterSeconds: 20
-      revision: ""
+      revision: "dev-init"
       template:
         metadata: {}
         spec:
@@ -40,6 +40,7 @@ spec:
       source:
         path: bootstrap/cluster-resources/{{name}}
         repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
+        targetRevision: dev-init  # For Helm, this refers to the chart version.
       syncPolicy:
         automated:
           allowEmpty: true

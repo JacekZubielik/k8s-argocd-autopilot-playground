@@ -20,6 +20,7 @@ spec:
   source:
     path: bootstrap/argo-cd
     repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
+    targetRevision: dev-init
   syncPolicy:
     automated:
       allowEmpty: true
