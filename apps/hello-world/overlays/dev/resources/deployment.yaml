@@ -39,18 +39,18 @@ spec:
           - configMapRef:
               name: hello-world-config
 
-        volumeMounts:
-          - mountPath: /app/data
-            name: hello-world-pv-storage
-            readOnly: false
+        # volumeMounts:
+        #   - mountPath: /app/data
+        #     name: hello-world-pv-storage
+        #     readOnly: false
+
+        # # volumes:
+        # # - name: hello-world-pv-storage
+        # #   persistentVolumeClaim:
+        # #     claimName: hello-world-pv-claim
 
         # volumes:
-        # - name: hello-world-pv-storage
-        #   persistentVolumeClaim:
-        #     claimName: hello-world-pv-claim
-
-        volumes:
-          - name: hello-world-pv-storage
-            hostPath:
-              path: "/mnt/volume-0/PV/hello-world-pv-volume"
-              #type: Directory # this field is optional
+        #   - name: hello-world-pv-storage
+        #     hostPath:
+        #       path: "/mnt/volume-0/PV/hello-world-pv-volume"
+        #       #type: Directory # this field is optional
