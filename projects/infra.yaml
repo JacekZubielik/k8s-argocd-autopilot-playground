@@ -36,7 +36,7 @@ spec:
     - git:
         files:
           - path: apps/**/infra/config.json
-        repoURL: https://github.com/jacekzubielik/homelab-argocd.git
+        repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
         requeueAfterSeconds: 20
         revision: ""
         template:
@@ -49,7 +49,7 @@ spec:
     - git:
         files:
           - path: apps/**/infra/config_dir.json
-        repoURL: https://github.com/jacekzubielik/homelab-argocd.git
+        repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
         requeueAfterSeconds: 20
         revision: ""
         template:

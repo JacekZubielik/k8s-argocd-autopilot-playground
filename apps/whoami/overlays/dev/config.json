@@ -8,8 +8,8 @@
   "srcTargetRevision": "dev-init",
   "syncWave": "4",
   "appRole": "dev",
-  "labels": null,
-  "annotations": null,
+  "labels": "",
+  "annotations": "",
   "exclude": "",
   "include": ""
 }
