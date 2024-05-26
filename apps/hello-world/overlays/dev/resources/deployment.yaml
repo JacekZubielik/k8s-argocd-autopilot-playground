@@ -23,17 +23,17 @@ spec:
       labels:
         app.kubernetes.io/name: hello-world-frontend
         task: hello-world-frontend
-    spec:
-      restartPolicy: Always
+    # spec:
+    #   restartPolicy: Always
 
-    containers:
-      - image: kostiscodefresh/simple-web-app:3d9b390
-        imagePullPolicy: IfNotPresent
-        name: webserver-simple
-        ports:
-          - containerPort: 80
-            name: http
-            protocol: TCP
+    # containers:
+    #   - image: kostiscodefresh/simple-web-app:3d9b390
+    #     imagePullPolicy: IfNotPresent
+    #     name: webserver-simple
+    #     ports:
+    #       - containerPort: 80
+    #         name: http
+    #         protocol: TCP
 
         envFrom:
           - configMapRef:
