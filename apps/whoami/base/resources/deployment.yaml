@@ -20,15 +20,15 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: whoami-frontend
-        task: whoami-frontend
-    containers:
-    - image: traefik/whoami
-      imagePullPolicy: IfNotPresent
-      name: whoami
-      ports:
-        - containerPort: 80
-          name: http
-          protocol: TCP
+    spec:
+      containers:
+      - image: traefik/whoami
+        imagePullPolicy: IfNotPresent
+        name: whoami
+        ports:
+          - containerPort: 80
+            name: http
+            protocol: TCP
     envFrom:
       - configMapRef:
           name: whoami-frontend-config
