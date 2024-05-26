@@ -1,56 +1,19 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world-frontend
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "4"
-  labels:
-    app.kubernetes.io/name: hello-world-frontend
-
 spec:
   replicas: 1
-  revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: hello-world-frontend
-  strategy:
-    type: Recreate
-
+      app: hello-world-frontend
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: hello-world-frontend
-        task: hello-world-frontend
-    # spec:
-    #   restartPolicy: Always
-
-    # containers:
-    #   - image: kostiscodefresh/simple-web-app:3d9b390
-    #     imagePullPolicy: IfNotPresent
-    #     name: webserver-simple
-    #     ports:
-    #       - containerPort: 80
-    #         name: http
-    #         protocol: TCP
-
-      envFrom:
-        - configMapRef:
-            name: hello-world-config
-
-        # volumeMounts:
-        #   - mountPath: /app/data
-        #     name: hello-world-pv-storage
-        #     readOnly: false
-
-        # # volumes:
-        # # - name: hello-world-pv-storage
-        # #   persistentVolumeClaim:
-        # #     claimName: hello-world-pv-claim
-
-        # volumes:
-        #   - name: hello-world-pv-storage
-        #     hostPath:
-        #       path: "/mnt/volume-0/PV/hello-world-pv-volume"
-        #       #type: Directory # this field is optional
+        app: hello-world-frontend
+    spec:
+      containers:
+      - name: webserver-simple
+        image: docker.io/kostiscodefresh/simple-web-app:3d9b390
+        ports:
+        - containerPort: 8080
