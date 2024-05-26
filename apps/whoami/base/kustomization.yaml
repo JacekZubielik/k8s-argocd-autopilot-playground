@@ -8,10 +8,6 @@ metadata:
   labels:
     app.kubernetes.io/name: whoami-frontend
 
-
-
-# resources:
-# - resources/deployment.yaml
-# - resources/ingressroute.yaml
-# - resources/service.yaml
-# #- resources/namespace.yaml
+resources:
+- resources/deployment.yaml
+- resources/service.yaml
