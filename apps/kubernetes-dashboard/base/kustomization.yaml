@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kubernetes-dashboard
+
+resources:
+  - namespace.yaml
+
+helmCharts:
+  - name: kubernetes-dashboard
+    repo: https://kubernetes.github.io/dashboard/
+    version: 5.0.4
+    releaseName: kubernetes-dashboard
+    namespace: kubernetes-dashboard
+    includeCRDs: true
+    valuesFile: values.yaml
