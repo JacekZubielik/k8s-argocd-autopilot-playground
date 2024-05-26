@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-options: PruneLast=true
-    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/sync-wave: '{{ syncWave }}'
   creationTimestamp: null
   name: prod
   namespace: argocd
@@ -28,7 +28,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: '{{ syncWave }}'
   creationTimestamp: null
   name: prod
   namespace: argocd
@@ -80,12 +80,35 @@ spec:
         jsonPointers:
         - /status
         kind: Application
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+          - /operation
       project: prod
       source:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
         targetRevision: '{{ srcTargetRevision }}'
       syncPolicy:
+        retry:
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 8m0s
+          limit: 2
+        syncOptions:
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - preserveResourcesOnDeletion=false
+          - SkipDryRunOnMissingResource=true
+          - Replace=false
+          - ServerSideApply=true
+          - ApplyOutOfSyncOnly=true
+          - Validate=false
+          - PruneLast=true
+          - Delete=false
+          - RespectIgnoreDifferences=true
+          - FailOnSharedResource=false
         automated:
           allowEmpty: true
           prune: true
