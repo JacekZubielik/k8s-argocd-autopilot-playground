@@ -7,27 +7,17 @@ metadata:
     argocd.argoproj.io/sync-wave: "4"
   labels:
     app.kubernetes.io/name: hello-world-frontend
+
 spec:
-  replicas: 2
-  revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: hello-world-frontend
-  strategy:
-    type: Recreate
+      app: excalidraw
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: hello-world-frontend
-        task: hello-world-frontend
+        app: excalidraw
     containers:
-    - image: kostiscodefresh/simple-web-app
-      imagePullPolicy: IfNotPresent
-      name: webserver-simple
-      ports:
-        - containerPort: 8080
-          name: http
-          protocol: TCP
-    envFrom:
-      - configMapRef:
-          name: hello-world-frontend-config
+    - name: excalidraw
+      image: kostiscodefresh/simple-web-app:latest
+
+
