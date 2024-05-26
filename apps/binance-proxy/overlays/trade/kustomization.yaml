@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: trade
 resources:
 - ../../base
+- resources/namespace.yaml
 
 metadata:
   annotations:
