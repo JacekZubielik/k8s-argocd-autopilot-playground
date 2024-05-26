@@ -6,11 +6,13 @@ resources:
 
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/hook: PreSync
   # labels:
   #   app.kubernetes.io/name: binance-proxy
-
+  labels:
+    appId: binance-proxy
 
 helmCharts:
   - name: binance-proxy
@@ -19,3 +21,11 @@ helmCharts:
     releaseName: binance-proxy
     includeCRDs: false
     valuesFile: values.yaml
+
+# Here's the warning fix
+patches:
+  - target:
+      kind: CustomResourceDefinition
+    patch: |- 
+      - op: remove
+        path: /metadata/labels/app.kubernetes.io~1instance
