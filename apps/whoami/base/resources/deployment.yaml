@@ -29,6 +29,3 @@ spec:
           - containerPort: 80
             name: http
             protocol: TCP
-    envFrom:
-      - configMapRef:
-          name: whoami-frontend-config
