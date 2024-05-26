@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "4"
+  # labels:
+    #app.kubernetes.io/name: hello-world-frontend
+  name: hello-world-pv-claim
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: hostpath
+  #volumeName: hello-world-pv-volume
+  #volumeMode: Filesystem
+
+  # selector:
+  #   matchLabels:
+  #     volume: hello-world-pv-volume
+
+
+

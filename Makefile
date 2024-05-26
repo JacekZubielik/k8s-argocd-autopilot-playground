@@ -2,6 +2,8 @@ KUBERNETES_VERSION := 1.29.2
 
 KIND_CLUSTER_NAME=k8s-argocd-autopilot-playground
 
+export GIT_REPO := https://github.com/jacekzubielik/k8s-argocd-autopilot-playground
+
 all: help
 
 .PHONY: launch-k8s
@@ -10,7 +12,6 @@ launch-k8s: ## Launch Kubernetes cluster with kind
 		kind create cluster --name=$(KIND_CLUSTER_NAME) --config kind-config.yaml --image kindest/node:v$(KUBERNETES_VERSION) --wait 180s; \
 		kubectl wait pod --all -n kube-system --for condition=Ready --timeout 180s; \
 	fi
-	# $(MAKE) portforward
 
 .PHONY: shutdown-k8s
 shutdown-k8s: ## Shutdown Kubernetes cluster
@@ -27,6 +28,12 @@ deploy-argocd: ## Deploy Argo CD on Kubernetes cluster
 	kubectl -n argocd wait --for=condition=available --timeout=300s --all deployments
 	kustomize build ./manifests/applications | kubectl apply -f -
 	# $(MAKE) login-argocd
+
+.PHONY: deploy-argocd-autopilot-recovery
+deploy-argocd-autopilot-recovery: ## Deploy Argo CD on Kubernetes cluster
+	argocd-autopilot repo bootstrap --recover --app "${GIT_REPO}/bootstrap/argo-cd"
+	kubectl -n argocd wait --for=condition=available --timeout=300s --all deployments
+	# kustomize build ./apps | kubectl apply -f -
 
 .PHONY: sync-applications
 sync-applications: ## Sync Applications
