@@ -1,15 +1,15 @@
 {
-  "appName": "binance-proxy",
-  "userGivenName": "binance-proxy",
+  "appName": "hello-world",
+  "userGivenName": "hello-world",
   "destNamespace": "dev",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/binance-proxy/overlays/dev",
+  "srcPath": "apps/hello-world/overlays/dev",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
-  "srcTargetRevision": "HEAD",
+  "srcTargetRevision": "",
   "syncWave": "4",
-  "appRole": "trade",
-  "labels": "",
-  "annotations": "",
+  "appRole": "dev",
+  "labels": null,
+  "annotations": null,
   "exclude": "",
   "include": ""
 }

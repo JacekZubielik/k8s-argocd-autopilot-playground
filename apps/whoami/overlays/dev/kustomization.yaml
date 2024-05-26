@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
 - ../../base
 - resources/deployment.yaml
-# - resources/ingressroute.yaml
 - resources/service.yaml
+# - resources/ingressroute.yaml
 # - resources/namespace.yaml
 
 configMapGenerator:
