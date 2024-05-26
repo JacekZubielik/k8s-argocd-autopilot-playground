@@ -11,14 +11,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: excalidraw
+      app: hello-world-frontend
   template:
     metadata:
       labels:
-        app: excalidraw
+        app: hello-world-frontend
   spec:
     containers:
-    - name: excalidraw
+    - name: hello-world-frontend
       image: kostiscodefresh/simple-web-app:latest
 
 
