@@ -16,6 +16,7 @@ spec:
     metadata:
       labels:
         app: excalidraw
+  spec:
     containers:
     - name: excalidraw
       image: kostiscodefresh/simple-web-app:latest
