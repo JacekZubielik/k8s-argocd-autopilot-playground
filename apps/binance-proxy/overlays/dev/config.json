@@ -6,6 +6,7 @@
   "srcPath": "apps/binance-proxy/overlays/dev",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
   "srcTargetRevision": "dev-init",
+  "syncWave": "4",
   "appRole": "trade",
   "labels": "",
   "annotations": "",
