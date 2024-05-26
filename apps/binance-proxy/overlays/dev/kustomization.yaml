@@ -12,10 +12,10 @@ metadata:
   # labels:
   #   app.kubernetes.io/name: binance-proxy
   labels:
-    appId: binance-proxy-[ID]
+    appId: '{{ appName }}'
 
 helmCharts:
-  - name: binance-proxy-[ID]
+  - name: '{{ appName }}'
     version: 0.0.4
     repo: https://jacekzubielik.github.io/jz-helm-charts
     releaseName: binance-proxy
