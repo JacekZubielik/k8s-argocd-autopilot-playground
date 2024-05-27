@@ -13,7 +13,6 @@ spec:
   selector:
     matchLabels:
       app: node-app
-  strategy: {}
   template:
     metadata:
       labels:
@@ -34,4 +33,4 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "100m"
-status: {}
+# status: {}
