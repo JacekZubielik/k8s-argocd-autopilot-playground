@@ -1,35 +1,8 @@
-#
-#  Author: Hari Sekhon
-#  Date: 2023-06-12 22:02:33 +0100 (Mon, 12 Jun 2023)
-#
-#  vim:ts=2:sts=2:sw=2:et
-#  lint: k8s
-#
-#  https://github.com/HariSekhon/Kubernetes-configs
-#
-#  License: see accompanying Hari Sekhon LICENSE file
-#
-#  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback to help steer this or other code I publish
-#
-#  https://www.linkedin.com/in/HariSekhon
-#
-
-# ============================================================================ #
-#                            Rancher Chart Values
-# ============================================================================ #
-
-# helm repo add rancher https://releases.rancher.com/server-charts/latest
-#
-# helm show values rancher/rancher >> values.yaml
-
 ---
-# Fully qualified name to reach your Rancher server
-# hostname: rancher.my.org  # XXX: Edit
-
 global:
   cattle:
     psp:
-      enabled: false  # XXX: Kubernetes 1.25 removed Pod Security Policis so this breaks installation if set to true
+      enabled: false
 
 # Additional Trusted CAs.
 # Enable this flag and add your CA certs as a secret named tls-ca-additional in the namespace.
