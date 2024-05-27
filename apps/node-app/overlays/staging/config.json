@@ -6,7 +6,7 @@
   "srcPath": "apps/node-app/overlays/staging",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
   "srcTargetRevision": "dev-nest-app",
-  "syncWave": "4",
+  "syncWave": "10",
   "appRole": "test",
   "labels": "",
   "annotations": "",
