@@ -12,7 +12,7 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: node-app
+      app: node-app
   strategy: {}
   template:
     metadata:
