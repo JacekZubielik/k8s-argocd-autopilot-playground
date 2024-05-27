@@ -7,10 +7,9 @@ metadata:
     argocd.argoproj.io/sync-wave: "10"
   labels:
     app.kubernetes.io/name: node-app
-
 spec:
   replicas: 1
-  revisionHistoryLimit: 3
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app.kubernetes.io/name: node-app
@@ -24,3 +23,13 @@ spec:
           name: node-app
           ports:
           - containerPort: 3000
+          envFrom:
+          - configMapRef:
+              name: node-app-config
+          resources:
+            requests:
+              memory: "256Mi" 
+              cpu: "250m"    # 500milliCPUs (1/2 CPU)
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
