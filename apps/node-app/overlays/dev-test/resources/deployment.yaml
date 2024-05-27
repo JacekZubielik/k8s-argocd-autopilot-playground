@@ -13,6 +13,8 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: node-app
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -21,6 +23,7 @@ spec:
       containers:
         - name: node-app
           image: ghcr.io/jacekzubielik/node-app:2.1.13
+          imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 3000
           envFrom:
