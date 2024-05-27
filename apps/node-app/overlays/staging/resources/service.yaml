@@ -13,5 +13,4 @@ metadata:
 #     app: node-app
   ports:
     - protocol: TCP
-      port: 80
       targetPort: 3000
