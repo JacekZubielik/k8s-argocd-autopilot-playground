@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: node-app
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: '{{ sync-Wave }}'
-  labels:
-    app.kubernetes.io/name: node-app
+# metadata:
+#   name: node-app
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#     argocd.argoproj.io/sync-wave: '{{ sync-Wave }}'
+#   labels:
+#     app.kubernetes.io/name: node-app
 
 spec:
   replicas: 1
