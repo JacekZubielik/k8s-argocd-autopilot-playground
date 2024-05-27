@@ -5,7 +5,6 @@ metadata:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-options: PruneLast=true
     argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-  creationTimestamp: null
   name: trade
   namespace: argocd
 spec:
@@ -29,7 +28,6 @@ kind: ApplicationSet
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-  creationTimestamp: null
   name: trade
   namespace: argocd
 spec:
@@ -39,7 +37,7 @@ spec:
         - path: apps/**/trade/config.json
         repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
         requeueAfterSeconds: 20
-        revision: "dev-init"
+        revision: ""
         template:
           metadata: {}
           spec:
@@ -52,7 +50,7 @@ spec:
         - path: apps/**/trade/config_dir.json
         repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
         requeueAfterSeconds: 20
-        revision: "dev-init"
+        revision: ""
         template:
           metadata: {}
           spec:
