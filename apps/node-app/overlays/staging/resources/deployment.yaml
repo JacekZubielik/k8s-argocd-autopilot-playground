@@ -27,11 +27,11 @@ spec:
           # envFrom:
           # - configMapRef:
           #     name: node-app-config
-          # resources:
-            # requests:
-            #   memory: "16Mi" 
-            #   cpu: "50m"    # 500milliCPUs (1/2 CPU)
-            # limits:
-            #   memory: "128Mi"
-            #   cpu: "100m"
-# status: {}
+          resources:
+            requests:
+              memory: "256Mi" 
+              cpu: "250m"    # 500milliCPUs (1/2 CPU)
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+

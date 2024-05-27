@@ -7,11 +7,10 @@ metadata:
     argocd.argoproj.io/sync-wave: "10"
   labels:
     app.kubernetes.io/name: node-app
-
 spec:
-  selector:
-    app: node-app
   ports:
     - protocol: TCP
       port: 80
       targetPort: 3000
+  selector:
+    app: node-app
