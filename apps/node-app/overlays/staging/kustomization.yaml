@@ -5,7 +5,3 @@ resources:
 - resources/deployment.yaml
 - resources/service.yaml
 
-# images:
-# - name: ghcr.io/jacekzubielik/node-app
-#   # newName: docker.io/kostiscodefresh/simple-web-app
-#   newTag: 2.1.13
