@@ -8,11 +8,9 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/hook: PreSync
-  # labels:
-  #   app.kubernetes.io/name: binance-proxy
+    argocd.argoproj.io/sync-wave: "10"
   labels:
-    appId: binance-proxy
+    app.kubernetes.io/name: binance-proxy
 
 helmCharts:
   - name: binance-proxy
