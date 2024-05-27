@@ -31,5 +31,5 @@ resources:
 - resources/argocd-cm-cmp-kustomize-build-with-helm.yaml
 - resources/kustomize-with-helm.yaml
 patches:
-- path: exposeservice.yaml
+# - path: exposeservice.yaml
 - path: kustomize-with-helm.sidecar.yaml
