@@ -4,13 +4,12 @@ metadata:
   name: whoami-frontend
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "0"
   labels:
     app.kubernetes.io/name: whoami-frontend
-
 spec:
   replicas: 2
-  revisionHistoryLimit: 3
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app.kubernetes.io/name: whoami-frontend
@@ -22,10 +21,18 @@ spec:
         app.kubernetes.io/name: whoami-frontend
     spec:
       containers:
-      - image: traefik/whoami
-        imagePullPolicy: IfNotPresent
-        name: whoami
-        ports:
+        - name: whoami-frontendpp
+          image: ghcr.io/traefik/whoami:v1.10.2
+          imagePullPolicy: IfNotPresent
+          ports:
           - containerPort: 80
-            name: http
-            protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: whoami-frontend-config
+          resources:
+            requests:
+              memory: "256Mi" 
+              cpu: "250m"    # 500milliCPUs (1/2 CPU)
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

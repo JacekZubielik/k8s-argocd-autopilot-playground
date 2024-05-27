@@ -5,7 +5,7 @@ metadata:
   name: whoami-frontend
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "0"
   labels:
     app.kubernetes.io/name: whoami-frontend
 spec:
@@ -17,4 +17,4 @@ spec:
   selector:
     app.kubernetes.io/name: whoami-frontend
     task: whoami-frontend
-  type: ClusterIP
+  # type: ClusterIP
