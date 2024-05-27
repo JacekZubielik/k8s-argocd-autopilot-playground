@@ -2,22 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: node-app
-#   annotations:
-#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-#     argocd.argoproj.io/sync-wave: '{{ sync-Wave }}'
-#   labels:
-#     app.kubernetes.io/name: node-app
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: node-app
 spec:
   replicas: 1
-  revisionHistoryLimit: 3
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app.kubernetes.io/name: node-app
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: node-app
     spec:
       containers:
         - name: node-app
-          image: ghcr.io/jacekzubielik/node-app:2.1.12
+          image: ghcr.io/jacekzubielik/node-app:2.1.13
           ports:
           - containerPort: 3000
           envFrom:
@@ -25,8 +28,8 @@ spec:
               name: node-app-config
           resources:
             requests:
-              memory: "16Mi" 
-              cpu: "50m"    # 500milliCPUs (1/2 CPU)
+              memory: "256Mi" 
+              cpu: "250m"    # 500milliCPUs (1/2 CPU)
             limits:
-              memory: "128Mi"
-              cpu: "100m"
+              memory: "512Mi"
+              cpu: "500m"
