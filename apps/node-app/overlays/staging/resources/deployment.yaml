@@ -11,9 +11,9 @@ metadata:
 spec:
   replicas: 1
   revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: staging-node-app
+  # selector:
+  #   matchLabels:
+  #     app: staging-node-app
   template:
     spec:
       containers:

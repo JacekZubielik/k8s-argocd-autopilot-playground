@@ -8,9 +8,9 @@ metadata:
   # labels:
   #   # app.kubernetes.io/name: node-app
   #   app: node-app
-spec:
-  selector:
-    app: node-app
+# spec:
+#   selector:
+#     app: node-app
   ports:
     - protocol: TCP
       port: 80
