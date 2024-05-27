@@ -35,7 +35,7 @@ spec:
   - git:
       files:
       # - path: apps/**/dev/config.json
-      - path: apps/**/dev/config.yaml
+      - path: apps/**/dev-test/config.yaml
       repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
       requeueAfterSeconds: 20
       revision: ""
