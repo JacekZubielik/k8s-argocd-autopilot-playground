@@ -5,15 +5,15 @@ metadata:
 #   annotations:
 #     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 #     argocd.argoproj.io/sync-wave: '{{ sync-Wave }}'
-  labels:
-    app.kubernetes.io/name: node-app
+  # labels:
+  #   app.kubernetes.io/name: node-app
   #   app: node-app
 spec:
   replicas: 1
   revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: node-app
+  # selector:
+  #   matchLabels:
+  #     app.kubernetes.io/name: node-app
   template:
     spec:
       containers:
