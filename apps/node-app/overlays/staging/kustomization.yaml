@@ -3,9 +3,9 @@ kind: Kustomization
 
 metadata:
   name: node-app
-  # annotations:
-  #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-  #   argocd.argoproj.io/sync-wave: "10"
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: '{{ sync-Wave }}'
   labels:
     app: node-app
 
