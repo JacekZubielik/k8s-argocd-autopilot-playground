@@ -7,4 +7,10 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/hook: PreSync
+  labels:
+    app.kubernetes.io/name: node-app
 
+configMapGenerator:
+- name: node-app-config
+  literals:
+  - TZ=CET
