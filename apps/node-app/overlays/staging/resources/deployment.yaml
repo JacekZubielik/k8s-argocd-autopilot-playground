@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: node-app
 spec:
   replicas: 1
-  revisionHistoryLimit: 3
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app.kubernetes.io/name: node-app
