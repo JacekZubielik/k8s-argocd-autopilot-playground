@@ -9,7 +9,6 @@ metadata:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: '{{ sync-Wave }}'
   labels:
-    app.kubernetes.io/name: node-app
     app: node-app
 
 configMapGenerator:
