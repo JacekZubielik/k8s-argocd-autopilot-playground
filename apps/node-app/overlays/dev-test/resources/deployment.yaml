@@ -34,8 +34,6 @@ spec:
             httpGet:
               path: /
               port: http
-
-
           envFrom:
           - configMapRef:
               name: node-app-config
