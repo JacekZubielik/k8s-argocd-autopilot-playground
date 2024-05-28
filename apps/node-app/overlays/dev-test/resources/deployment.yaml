@@ -26,15 +26,6 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 3000
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-
           readinessProbe:
             tcpSocket:
               port: 3000
@@ -44,7 +35,6 @@ spec:
             httpGet:
               path: /health
               port: 3000
-
           envFrom:
           - configMapRef:
               name: node-app-config
