@@ -5,7 +5,7 @@
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/ingress-nginx/overlays/dev",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
-  "srcTargetRevision": "HEAD",
+  "srcTargetRevision": "ingress-nginx",
   "syncWave": "1",
   "appRole": "infra",
   "labels": "",
