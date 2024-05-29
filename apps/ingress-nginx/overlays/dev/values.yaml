@@ -166,7 +166,7 @@ controller:
       # -- Annotations are mandatory for the load balancer to come up. Varies with the cloud service.
       annotations:
         cloud.google.com/load-balancer-type: Internal
-      # loadBalancerIP: ""
+      loadBalancerIP: "127.0.0.1"
       loadBalancerSourceRanges:
         - 10.0.0.0/8
         - 172.16.0.0/16
