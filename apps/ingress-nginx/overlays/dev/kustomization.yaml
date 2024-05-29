@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: ingress-nginx
+
 resources:
 - ../../base
 
@@ -18,5 +18,6 @@ helmCharts:
     repo: https://kubernetes.github.io/ingress-nginx
     releaseName: ingress-nginx
     includeCRDs: true
+    namespace: ingress-nginx
     # valuesFile: values.yaml
 
