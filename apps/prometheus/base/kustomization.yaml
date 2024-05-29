@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: monitoring
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
   labels:
     app.kubernetes.io/name: prometheus
