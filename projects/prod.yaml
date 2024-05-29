@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -39,10 +40,14 @@ spec:
       requeueAfterSeconds: 20
       revision: ""
       template:
-        metadata: {}
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
         spec:
           destination: {}
           project: ""
+          source:
+            repoURL: ""
   - git:
       files:
       - path: apps/**/prod/config_dir.json
@@ -50,7 +55,9 @@ spec:
       requeueAfterSeconds: 20
       revision: ""
       template:
-        metadata: {}
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
         spec:
           destination: {}
           project: ""
@@ -67,6 +74,9 @@ spec:
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
+        application-role: '{{ appRole }}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       name: prod-{{ userGivenName }}
       namespace: argocd
     spec:
@@ -75,13 +85,23 @@ spec:
         server: '{{ destServer }}'
       ignoreDifferences:
       - group: argoproj.io
-        jsonPointers:
-        - /status
         kind: Application
+        jsonPointers:
+          - /status
       - group: argoproj.io
         kind: Application
         jsonPointers:
           - /operation
+      - group: "apps"
+        kind: "Deployment"
+        jsonPointers:
+          - /spec/template/metadata/annotations
+          - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+          - /spec/template/metadata/annotations
+          - /spec/template/metadata/labels
       project: prod
       source:
         path: '{{ srcPath }}'
