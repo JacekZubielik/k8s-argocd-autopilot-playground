@@ -9,8 +9,4 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
   labels:
     app.kubernetes.io/name: ingress-nginx
-
-configMapGenerator:
-- name: ingress-nginx-config
-  literals:
-  - TZ=CET
+  name: ingress-nginx
