@@ -27,7 +27,7 @@ configMapGenerator:
   literals:
   - TZ=CET
 
-patches:
-  - path: internal-loadbalancer-service.patch.yaml
+# patches:
+#   - path: internal-loadbalancer-service.patch.yaml
   # enable this for dev / staging environments to use internal IP load balancer only
   # - patches/internal-loadbalancer-service.patch.yaml
