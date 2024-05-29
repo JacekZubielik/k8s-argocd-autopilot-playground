@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: ghcr.io/jacekzubielik/node-app:dev-healthchecks
+          image: ghcr.io/jacekzubielik/node-app:dev-health-indicators
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 3000
