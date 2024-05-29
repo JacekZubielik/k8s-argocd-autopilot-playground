@@ -1,7 +1,7 @@
 {
   "appName": "kubernetes-dashboard",
   "userGivenName": "kubernetes-dashboard",
-  "destNamespace": "dev",
+  "destNamespace": "kubernetes-dashboard",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/kubernetes-dashboard/overlays/dev",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
