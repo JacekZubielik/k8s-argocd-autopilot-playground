@@ -15,7 +15,8 @@ metadata:
     app.kubernetes.io/name: demo-app
   name: demo-app
 
-# images:
-# - name: docker.io/kostiscodefresh/simple-web-app
-#   newName: docker.io/kostiscodefresh/simple-web-app
-#   newTag: c88df35
+configMapGenerator:
+- name: demo-app-config
+  literals:
+  - TZ=CET
+
