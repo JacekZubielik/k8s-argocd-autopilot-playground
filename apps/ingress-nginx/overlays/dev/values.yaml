@@ -2,8 +2,8 @@
 fullnameOverride: ingress-nginx-internal
 controller:
   name: controller
-  replicaCount: 3
-  minAvailable: 2
+  replicaCount: 1
+  minAvailable: 1
   # XXX: requires priorityclass.yaml
   priorityClassName: high-priority
   # copied from deployment.yaml - see there for comments and more details
