@@ -5,13 +5,13 @@ metadata:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-options: PruneLast=true
     argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-  name: dev
+  name: iot
   namespace: argocd
 spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: dev project
+  description: iot project
   destinations:
   - namespace: '*'
     server: '*'
@@ -21,20 +21,19 @@ spec:
   sourceRepos:
   - '*'
 status: {}
-
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-  name: dev
+  name: iot
   namespace: argocd
 spec:
   generators:
   - git:
       files:
-      - path: apps/**/dev/config.json
+      - path: apps/**/iot/config.json
       repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
       requeueAfterSeconds: 20
       revision: ""
@@ -47,7 +46,7 @@ spec:
             repoURL: ""
   - git:
       files:
-      - path: apps/**/dev/config_dir.json
+      - path: apps/**/iot/config_dir.json
       repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
       requeueAfterSeconds: 20
       revision: ""
@@ -72,7 +71,7 @@ spec:
         application-role: '{{ appRole }}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-      name: dev-{{ userGivenName }}
+      name: iot-{{ userGivenName }}
       namespace: argocd
     spec:
       destination:
@@ -87,17 +86,7 @@ spec:
         kind: Application
         jsonPointers:
           - /operation
-      - group: "apps"
-        kind: "Deployment"
-        jsonPointers:
-          - /spec/template/metadata/annotations
-          - /spec/template/metadata/labels
-      - group: "apps"
-        kind: "StatefulSet"
-        jsonPointers:
-          - /spec/template/metadata/annotations
-          - /spec/template/metadata/labels
-      project: dev
+      project: iot
       source:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
@@ -105,23 +94,23 @@ spec:
       syncPolicy:
         retry:
           backoff:
-            duration: 10s
+            duration: 5s
             factor: 2
             maxDuration: 8m0s
           limit: 2
         syncOptions:
-          - CreateNamespace=true
-          - PrunePropagationPolicy=foreground
-          - preserveResourcesOnDeletion=false
-          - SkipDryRunOnMissingResource=true
-          - Replace=false
-          - ServerSideApply=true
-          - ApplyOutOfSyncOnly=true
-          - Validate=false
-          - PruneLast=true
-          - Delete=false
-          - RespectIgnoreDifferences=true
-          - FailOnSharedResource=false
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - preserveResourcesOnDeletion=false
+        - SkipDryRunOnMissingResource=true
+        - Replace=false
+        - ServerSideApply=true
+        - ApplyOutOfSyncOnly=true
+        - Validate=false
+        - PruneLast=true
+        - Delete=false
+        - RespectIgnoreDifferences=true
+        - FailOnSharedResource=false
         automated:
           allowEmpty: true
           prune: true

@@ -5,13 +5,13 @@ metadata:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-options: PruneLast=true
     argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-  name: dev
+  name: storage
   namespace: argocd
 spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: dev project
+  description: storage project
   destinations:
   - namespace: '*'
     server: '*'
@@ -28,13 +28,13 @@ kind: ApplicationSet
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-  name: dev
+  name: storage
   namespace: argocd
 spec:
   generators:
   - git:
       files:
-      - path: apps/**/dev/config.json
+      - path: apps/**/storage/config.json
       repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
       requeueAfterSeconds: 20
       revision: ""
@@ -47,7 +47,7 @@ spec:
             repoURL: ""
   - git:
       files:
-      - path: apps/**/dev/config_dir.json
+      - path: apps/**/storage/config_dir.json
       repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
       requeueAfterSeconds: 20
       revision: ""
@@ -72,7 +72,7 @@ spec:
         application-role: '{{ appRole }}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-      name: dev-{{ userGivenName }}
+      name: storage-{{ userGivenName }}
       namespace: argocd
     spec:
       destination:
@@ -97,7 +97,7 @@ spec:
         jsonPointers:
           - /spec/template/metadata/annotations
           - /spec/template/metadata/labels
-      project: dev
+      project: storage
       source:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
