@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    app.kubernetes.io/name: prometheus
+
+helmCharts:
+  - name: prometheus
+    version: 25.20.0
+    repo: https://prometheus-community.github.io/helm-charts
+    releaseName: prometheus
+    includeCRDs: true
+    valuesFile: values.yaml
+    namespace: monitoring
+
+    # valuesInline:
+    #   alertmanager:
+    #     persistentVolume:
+    #       storageClass: manual
+    #   server:
+    #     persistentVolume:
+    #       storageClass: manual
+
+# resources:
+  # - resources/blackbox-exporter-dashboard-configmap.yaml
+  # - resources/namespace.yaml
+  # - resources/ingressroute.yaml
+  # - resources/pv.yaml
+  # - resources/sc.yaml
+  # - resources/pve-scrape-config.yaml
