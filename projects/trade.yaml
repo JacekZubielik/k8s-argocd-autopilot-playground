@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -9,17 +10,17 @@ metadata:
   namespace: argocd
 spec:
   clusterResourceWhitelist:
-  - group: "*"
-    kind: "*"
+  - group: '*'
+    kind: '*'
   description: trade project
   destinations:
-  - namespace: "*"
-    server: "*"
+  - namespace: '*'
+    server: '*'
   namespaceResourceWhitelist:
-  - group: "*"
-    kind: "*"
+  - group: '*'
+    kind: '*'
   sourceRepos:
-  - "*"
+  - '*'
 status: {}
 
 ---
@@ -32,46 +33,50 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - git:
-        files:
-        - path: apps/**/trade/config.json
-        repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
-        requeueAfterSeconds: 20
-        revision: ""
-        template:
-          metadata: {}
-          spec:
-            destination: {}
-            project: ""
-            source:
-              repoURL: ""
-    - git:
-        files:
-        - path: apps/**/trade/config_dir.json
-        repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
-        requeueAfterSeconds: 20
-        revision: ""
-        template:
-          metadata: {}
-          spec:
-            destination: {}
-            project: ""
-            source:
-              directory:
-                exclude: '{{ exclude }}'
-                include: '{{ include }}'
-                jsonnet: {}
-                recurse: true
-              repoURL: ""
+  - git:
+      files:
+      - path: apps/**/trade/config.json
+      repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
+      requeueAfterSeconds: 20
+      revision: ""
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
+        spec:
+          destination: {}
+          project: ""
+          source:
+            repoURL: ""
+  - git:
+      files:
+      - path: apps/**/trade/config_dir.json
+      repoURL: https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git
+      requeueAfterSeconds: 20
+      revision: ""
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
+        spec:
+          destination: {}
+          project: ""
+          source:
+            directory:
+              exclude: '{{ exclude }}'
+              include: '{{ include }}'
+              jsonnet: {}
+              recurse: true
+            repoURL: ""
   syncPolicy: {}
   template:
     metadata:
-      annotations:
-        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       name: trade-{{ userGivenName }}
       namespace: argocd
     spec:
@@ -79,14 +84,24 @@ spec:
         namespace: '{{ destNamespace }}'
         server: '{{ destServer }}'
       ignoreDifferences:
-        - group: argoproj.io
-          kind: Application
-          jsonPointers:
-            - /status
-        - group: argoproj.io
-          kind: Application
-          jsonPointers:
-            - /operation
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+          - /status
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+          - /operation
+      - group: "apps"
+        kind: "Deployment"
+        jsonPointers:
+          - /spec/template/metadata/annotations
+          - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+          - /spec/template/metadata/annotations
+          - /spec/template/metadata/labels
       project: trade
       source:
         path: '{{ srcPath }}'
@@ -111,6 +126,7 @@ spec:
           - PruneLast=true
           - Delete=false
           - RespectIgnoreDifferences=true
+          - FailOnSharedResource=false
         automated:
           allowEmpty: true
           prune: true

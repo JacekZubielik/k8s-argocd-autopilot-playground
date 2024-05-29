@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -21,6 +22,7 @@ spec:
   sourceRepos:
   - '*'
 status: {}
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -38,7 +40,9 @@ spec:
       requeueAfterSeconds: 20
       revision: ""
       template:
-        metadata: {}
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
         spec:
           destination: {}
           project: ""
@@ -51,7 +55,9 @@ spec:
       requeueAfterSeconds: 20
       revision: ""
       template:
-        metadata: {}
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
         spec:
           destination: {}
           project: ""
@@ -86,6 +92,16 @@ spec:
         kind: Application
         jsonPointers:
           - /operation
+      - group: "apps"
+        kind: "Deployment"
+        jsonPointers:
+          - /spec/template/metadata/annotations
+          - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+          - /spec/template/metadata/annotations
+          - /spec/template/metadata/labels
       project: iot
       source:
         path: '{{ srcPath }}'
@@ -94,23 +110,23 @@ spec:
       syncPolicy:
         retry:
           backoff:
-            duration: 5s
+            duration: 10s
             factor: 2
             maxDuration: 8m0s
           limit: 2
         syncOptions:
-        - CreateNamespace=true
-        - PrunePropagationPolicy=foreground
-        - preserveResourcesOnDeletion=false
-        - SkipDryRunOnMissingResource=true
-        - Replace=false
-        - ServerSideApply=true
-        - ApplyOutOfSyncOnly=true
-        - Validate=false
-        - PruneLast=true
-        - Delete=false
-        - RespectIgnoreDifferences=true
-        - FailOnSharedResource=false
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - preserveResourcesOnDeletion=false
+          - SkipDryRunOnMissingResource=true
+          - Replace=false
+          - ServerSideApply=true
+          - ApplyOutOfSyncOnly=true
+          - Validate=false
+          - PruneLast=true
+          - Delete=false
+          - RespectIgnoreDifferences=true
+          - FailOnSharedResource=false
         automated:
           allowEmpty: true
           prune: true
