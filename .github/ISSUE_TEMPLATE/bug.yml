@@ -1,5 +1,5 @@
 name: Bug
-description: File a bug/issue
+description: Bug/issue template
 title: "[BUG] <title>"
 labels: [Bug, Needs Triage]
 body:
