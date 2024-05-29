@@ -11,3 +11,4 @@ resources:
 - ../../base
 - resources/deployment.yaml
 - resources/service.yaml
+- resources/ingress.yaml
