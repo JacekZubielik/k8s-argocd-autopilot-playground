@@ -18,4 +18,3 @@ spec:
   selector:
     app.kubernetes.io/name: demo-app
     task: demo-app
-
