@@ -1,13 +1,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-metadata:
-  name: whoami-frontend
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "10"
-  labels:
-    app.kubernetes.io/name: whoami-frontend
+# namespace: dev
 resources:
 - ../../base
 - resources/deployment.yaml
 - resources/service.yaml
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
+  labels:
+    app.kubernetes.io/name: whoami
+  name: whoami
+
+configMapGenerator:
+- name: whoami-config
+  literals:
+  - TZ=CET

@@ -3,24 +3,8 @@ kind: Kustomization
 
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
   labels:
     app.kubernetes.io/name: hello-world-frontend
-
-resources:
-- resources/deployment.yaml
-
-configMapGenerator:
-  - name: hello-world-config
-    literals:
-      - TZ=CET
-
-# resources:
-#- resources/deployment.yaml
-# - resources/ingress.yaml
-# - resources/ingressroute-authentik.yaml
-# - resources/service.yaml
-# - resources/pvc.yaml
-# - resources/pv.yaml
-# - resources/namespace.yaml

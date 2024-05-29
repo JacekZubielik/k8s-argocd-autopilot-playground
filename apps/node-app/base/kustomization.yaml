@@ -6,12 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app: node-app
-
-configMapGenerator:
-- name: node-app-config
-  literals:
-  - TZ=CET
+    app.kubernetes.io/name: node-app
+  name: node-app

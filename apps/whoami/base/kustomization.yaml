@@ -1,14 +1,10 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app: whoami-frontend
-configMapGenerator:
-- name: whoami-frontend-config
-  literals:
-  - TZ=CET
+    app.kubernetes.io/name: whoami
+  name: whoami

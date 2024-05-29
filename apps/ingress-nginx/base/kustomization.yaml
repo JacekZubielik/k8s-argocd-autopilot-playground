@@ -6,10 +6,10 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "1"
   labels:
-    app: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
+
 configMapGenerator:
 - name: ingress-nginx-config
   literals:

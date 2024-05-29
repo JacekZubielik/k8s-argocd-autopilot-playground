@@ -9,8 +9,11 @@ metadata:
     argocd.argoproj.io/sync-wave: "10"
   labels:
     app.kubernetes.io/name: binance-proxy
+  name: binance-proxy
 
-configMapGenerator:
-- name: binance-proxy-config
-  literals:
-  - TZ=CET
+patches:
+  - target:
+      kind: CustomResourceDefinition
+    patch: |- 
+      - op: remove
+        path: /metadata/labels/app.kubernetes.io~1instance
