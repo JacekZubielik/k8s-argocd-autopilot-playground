@@ -3,8 +3,8 @@ kind: Kustomization
 # namespace: prod
 resources:
 - ../../base
-  - resources/deployment.yaml
-  - resources/service.yaml
+- resources/deployment.yaml
+- resources/service.yaml
 
 metadata:
   annotations:
@@ -15,7 +15,7 @@ metadata:
     app.kubernetes.io/name: demo-app
   name: demo-app
 
-images:
-- name: docker.io/kostiscodefresh/simple-web-app
-  newName: docker.io/kostiscodefresh/simple-web-app
-  newTag: c88df35
+# images:
+# - name: docker.io/kostiscodefresh/simple-web-app
+#   newName: docker.io/kostiscodefresh/simple-web-app
+#   newTag: c88df35
