@@ -10,7 +10,7 @@ metadata:
 
 helmCharts:
   - name: prometheus
-    version: 25.20.0
+    version: 25.21.0
     repo: https://prometheus-community.github.io/helm-charts
     releaseName: prometheus
     includeCRDs: true
