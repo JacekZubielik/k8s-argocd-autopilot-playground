@@ -5,10 +5,10 @@ resources:
   - cert-manager.yaml
   - loki.yaml
   - monitoring.yaml
-  - namespaces.yaml
-  - phlare.yaml
-  - prometheus-adapter.yaml
-  - prometheus.yaml
+  # - namespaces.yaml
+  # - phlare.yaml
+  # - prometheus-adapter.yaml
+  # - prometheus.yaml
   # - sandbox.yaml
-  - tempo.yaml
-  - victoriametrics.yaml
+  # - tempo.yaml
+  # - victoriametrics.yaml
