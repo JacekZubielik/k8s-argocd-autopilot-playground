@@ -3,7 +3,7 @@ kind: Kustomization
 # namespace: ingress-nginx
 resources:
 - ../../base
-- resources/priorityclass.yaml
+# - resources/priorityclass.yaml
 
 metadata:
   annotations:
@@ -27,15 +27,15 @@ configMapGenerator:
   literals:
   - TZ=CET
 
-patches:
+# patches:
 #   - path: internal-loadbalancer-service.patch.yaml
   # enable this for dev / staging environments to use internal IP load balancer only
   # - patches/internal-loadbalancer-service.patch.yaml
 
-  - path: pdb.patch.yaml
-    target:
-      group: policy
-      version: v1
-      kind: PodDisruptionBudget
-      name: ingress-nginx-controller
-      namespace: ingress-nginx
+  # - path: pdb.patch.yaml
+  #   target:
+  #     group: policy
+  #     version: v1
+  #     kind: PodDisruptionBudget
+  #     name: ingress-nginx-controller
+  #     namespace: ingress-nginx

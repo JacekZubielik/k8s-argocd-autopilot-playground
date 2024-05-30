@@ -1,7 +1,7 @@
 {
   "appName": "ingress-nginx",
   "userGivenName": "ingress-nginx",
-  "destNamespace": "ingress-nginx",
+  "destNamespace": "default",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/ingress-nginx/overlays/dev",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",

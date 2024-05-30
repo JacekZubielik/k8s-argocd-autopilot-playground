@@ -23,7 +23,7 @@ ingress-nginx:
 
     config:
       # Open Telemetry
-      enable-opentelemetry: "false"
+      enable-opentelemetry: "true"
       otlp-collector-host: tracing-tempo-distributor.tracing.svc.cluster.local
       otlp-service-name: nginx-internal
       # Print access log to file instead of stdout
