@@ -24,6 +24,6 @@ spec:
     - ReadWriteOnce #ReadWriteMany
   capacity:
     storage: 9Gi
-  hostPath:
-    path: "/mnt/volume-0/PV/prometheus"
-  storageClassName: manual
+  # hostPath:
+  #   path: "/mnt/volume-0/PV/prometheus"
+  storageClassName: standard
