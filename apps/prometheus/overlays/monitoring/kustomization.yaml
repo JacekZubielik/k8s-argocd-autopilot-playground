@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - ../../base
 # - ./resources/podmonitor.yaml
-- ./resources/pvc.yaml
+- ./resources/pv.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:
