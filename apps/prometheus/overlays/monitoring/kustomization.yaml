@@ -11,3 +11,13 @@ configMapGenerator:
   - name: grafana-dashboards
     files:
       - ./dashboards/argocd-performance.json
+
+helmCharts:
+  - name: prometheus
+    version: 25.21.0
+    repo: https://prometheus-community.github.io/helm-charts
+    releaseName: prometheus
+    includeCRDs: true
+    valuesFile: values.yaml
+    namespace: monitoring
+

@@ -3,19 +3,12 @@ kind: Kustomization
 namespace: monitoring
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=true
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
   labels:
     app.kubernetes.io/name: prometheus
-
-helmCharts:
-  - name: prometheus
-    version: 25.21.0
-    repo: https://prometheus-community.github.io/helm-charts
-    releaseName: prometheus
-    includeCRDs: true
-    valuesFile: values.yaml
-    namespace: monitoring
+  name: prometheus
 
     # valuesInline:
     #   alertmanager:
