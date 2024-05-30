@@ -1,11 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: node-app-dev-ingress
-  namespace: dev
   annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, ServerSideApply=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
     kubernetes.io/ingress.class: nginx
+  labels:
+    app.kubernetes.io/name: node-app
+  name: node-app
+  namespace: dev
 spec:
+  ingressClassName: nginx
   rules:
   - host: "kubernetes.internal"
     http:
@@ -14,6 +20,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: node-app-dev-svc
+            name: node-app
             port:
               number: 8000
