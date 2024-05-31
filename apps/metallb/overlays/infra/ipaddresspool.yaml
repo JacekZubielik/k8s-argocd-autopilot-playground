@@ -30,8 +30,8 @@ metadata:
 spec:
   ipAddressPools:
   - dev-lb-iprange
-  nodeSelectors:
-    kubernetes.io/hostname: k8s-playground-control-plane
+  nodeSelector: {}
+    # kubernetes.io/hostname: k8s-playground-control-plane
 
 
 
