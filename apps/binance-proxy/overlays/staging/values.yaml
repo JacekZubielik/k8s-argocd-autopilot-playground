@@ -55,7 +55,7 @@ autoscaling:
   averageMemoryUtilizationPercentage: 50
 
   nodeSelector:
-    kubernetes.io/hostname: k8s-argocd-autopilot-playground-control-plane
+    kubernetes.io/hostname: k8s-playground-control-plane
 
 tolerations: []
 
