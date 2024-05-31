@@ -221,8 +221,8 @@ controller:
     # limits:
       # cpu: 100m
       # memory: 100Mi
-  nodeSelector:
-    kubernetes.io/hostname: k8s-playground-control-plane
+  nodeSelector: {}
+    # kubernetes.io/hostname: k8s-playground-control-plane
   tolerations: []
   priorityClassName: ""
   runtimeClassName: ""
@@ -282,8 +282,8 @@ speaker:
     # limits:
       # cpu: 100m
       # memory: 100Mi
-  nodeSelector:
-    kubernetes.io/hostname: k8s-playground-control-plane
+  nodeSelector: {}
+    # kubernetes.io/hostname: k8s-playground-control-plane
   tolerations: []
   priorityClassName: ""
   affinity: {}
