@@ -3,7 +3,7 @@
   "userGivenName": "metallb",
   "destNamespace": "metallb-system",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/metallb-helm/overlays/infra",
+  "srcPath": "apps/metallb/overlays/infra",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
   "srcTargetRevision": "",
   "syncWave": "0",
