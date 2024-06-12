@@ -41,7 +41,7 @@ spec:
       initContainers:
       - name: install-ksops
         image: viaductoss/ksops:v4.3.1
-        # securityContext.runAsNonRoot: true
+        securityContext.runAsNonRoot: true
         command: ["/bin/sh", "-c"]
         args:
         - echo "Installing KSOPS...";
@@ -54,7 +54,7 @@ spec:
 
       containers:
       - name: argocd-repo-server
-        # command: ["gpg", "--import","/sops-gpg/sops.asc"]
+        command: ["gpg", "--import","/sops-gpg/sops.asc"]
         env:
         - name: XDG_CONFIG_HOME
           value: /.config
