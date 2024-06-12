@@ -15,6 +15,10 @@ spec:
         secret:
           secretName: sops-age
           defaultMode: 420
+      - name: sops-pgp
+        secret:
+          secretName: sops-pgp
+          defaultMode: 420
       - name: ssh-known-hosts
         configMap:
           name: argocd-ssh-known-hosts-cm
@@ -54,14 +58,14 @@ spec:
 
       containers:
       - name: argocd-repo-server
-        command: ["gpg", "--import","/.config/sops/sops.gpg.pub.asc"]
+        command: ["gpg", "--import", "/.config/sops/gpg/sops.gpg.pub.asc"]
         env:
         - name: XDG_CONFIG_HOME
           value: /.config
         - name: SOPS_AGE_KEY_FILE
           value: /.config/sops/age/keys.txt
-        # - name: GNUPGHOME
-        #   value: /home/argocd/.gnupg
+        - name: GNUPGHOME
+          value: /home/argocd/.gnupg
         # - name: AWS_ACCESS_KEY_ID
         #   valueFrom:
         #     secretKeyRef:
