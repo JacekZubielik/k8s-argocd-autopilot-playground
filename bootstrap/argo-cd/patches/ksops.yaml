@@ -97,15 +97,15 @@ spec:
         - name: custom-tools
           mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
           subPath: ksops
-        # - name: ssh-known-hosts
-        #   mountPath: /app/config/ssh
-        # - name: tls-certs
-        #   mountPath: /app/config/tls
-        # - name: gpg-keys
-        #   mountPath: /app/config/gpg/source
-        # - name: gpg-keyring
-        #   mountPath: /app/config/gpg/keys
-        # - name: argocd-repo-server-tls
-        #   mountPath: /app/config/reposerver/tls
+        - name: ssh-known-hosts
+          mountPath: /app/config/ssh
+        - name: tls-certs
+          mountPath: /app/config/tls
+        - name: gpg-keys
+          mountPath: /app/config/gpg/source
+        - name: gpg-keyring
+          mountPath: /app/config/gpg/keys
+        - name: argocd-repo-server-tls
+          mountPath: /app/config/reposerver/tls
         # - name: custom-tools #
         #   mountPath: /custom-tools
