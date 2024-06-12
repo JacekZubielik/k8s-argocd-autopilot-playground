@@ -62,10 +62,10 @@ spec:
         env:
         - name: XDG_CONFIG_HOME
           value: /.config
-        - name: SOPS_AGE_KEY_FILE
-          value: /.config/sops/age/keys.txt
-        - name: GNUPGHOME
-          value: /home/argocd/.gnupg
+        # - name: SOPS_AGE_KEY_FILE
+        #   value: /.config/sops/age/keys.txt
+        # - name: GNUPGHOME
+        #   value: /home/argocd/.gnupg
         # - name: AWS_ACCESS_KEY_ID
         #   valueFrom:
         #     secretKeyRef:
@@ -83,17 +83,11 @@ spec:
         - name: custom-tools
           mountPath: /usr/local/bin/kustomize
           subPath: kustomize
-        # - name: custom-tools #
-        #   mountPath: /custom-tools
-        - name: sops-age
-          mountPath: /.config/sops/age/keys.txt
-          subPath: keys.txt
-        - name: gpg-keys
-          mountPath: /app/config/gpg/source
-        - name: gpg-keyring
-          mountPath: /app/config/gpg/keys
-        - name: argocd-repo-server-tls
-          mountPath: /app/config/reposerver/tls
+
+        # - name: sops-age
+        #   mountPath: /.config/sops/age/keys.txt
+        #   subPath: keys.txt
+
         - name: tmp
           mountPath: /tmp
         - name: helm-working-dir
@@ -103,7 +97,15 @@ spec:
         - name: custom-tools
           mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
           subPath: ksops
-        - name: ssh-known-hosts
-          mountPath: /app/config/ssh
-        - name: tls-certs
-          mountPath: /app/config/tls
+        # - name: ssh-known-hosts
+        #   mountPath: /app/config/ssh
+        # - name: tls-certs
+        #   mountPath: /app/config/tls
+        # - name: gpg-keys
+        #   mountPath: /app/config/gpg/source
+        # - name: gpg-keyring
+        #   mountPath: /app/config/gpg/keys
+        # - name: argocd-repo-server-tls
+        #   mountPath: /app/config/reposerver/tls
+        # - name: custom-tools #
+        #   mountPath: /custom-tools
