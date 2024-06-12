@@ -5,7 +5,7 @@
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/node-app/overlays/dev",
   "srcRepoURL": "https://github.com/jacekzubielik/k8s-argocd-autopilot-playground.git",
-  "srcTargetRevision": "dev-sops",
+  "srcTargetRevision": "",
   "syncWave": "10",
   "appRole": "dev",
   "labels": "",
