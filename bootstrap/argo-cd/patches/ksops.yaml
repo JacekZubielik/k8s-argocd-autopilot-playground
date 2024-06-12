@@ -58,7 +58,7 @@ spec:
 
       containers:
       - name: argocd-repo-server
-        command: ["gpg", "--import", "/.config/sops/gpg/sops.gpg.pub.asc"]
+        # command: ["gpg", "--import", "/.config/sops/gpg/sops.gpg.pub.asc"]
         env:
         - name: XDG_CONFIG_HOME
           value: /.config
