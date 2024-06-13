@@ -107,5 +107,5 @@ spec:
           mountPath: /app/config/gpg/keys
         - name: argocd-repo-server-tls
           mountPath: /app/config/reposerver/tls
-        # - name: custom-tools #
-        #   mountPath: /custom-tools
+        - name: custom-tools #
+          mountPath: /custom-tools
