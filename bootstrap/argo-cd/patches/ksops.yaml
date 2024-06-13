@@ -84,16 +84,16 @@ spec:
           mountPath: /usr/local/bin/kustomize
           subPath: kustomize
 
-        # - name: sops-age
-        #   mountPath: /.config/sops/age/keys.txt
-        #   subPath: keys.txt
+        - name: sops-age
+          mountPath: /.config/sops/age/keys.txt
+          subPath: keys.txt
 
         - name: tmp
           mountPath: /tmp
         - name: helm-working-dir
           mountPath: /helm-working-dir
         - name: plugins
-          mountPath: /home/argocd/cmp-server/plugins
+          mountPath: /home/argocd/cmp-server/plugins  #  asd
         - name: custom-tools
           mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
           subPath: ksops
